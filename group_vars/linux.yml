@@ -1,0 +1,9 @@
+---
+
+#ansible_host: 192.168.122.151
+ansible_network_os: "linux"
+ansible_user: "ansible"
+ansible_password: "ansible"
+ansible_become: "yes"
+ansible_become_method: "sudo"
+ansible_become_password: "ansible"

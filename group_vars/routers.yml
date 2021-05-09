@@ -1,0 +1,14 @@
+---
+ansible_network_os: "ios"
+ansible_user: "ansible"
+ansible_password: "ansible"
+
+#R1: "192.168.122.174"
+#  vars:
+#ansible_user: "ansible"
+#ansible_network_os: "ios"
+
+#R2: "192.168.122.193"
+#  vars:
+#ansible_user: "ansible"
+#ansible_network_os: "ios"

@@ -1,0 +1,59 @@
+---
+- name: "My First Playbook"
+  hosts: routers
+  connection: network_cli
+  gather_facts: yes
+  tasks: 
+    - name: "Task to get router interface output"
+      ios_command:
+        commands: "show ip interface brief"
+      register : cli_result
+
+    - name: "Print router output"
+      debug:
+        msg: "{{ cli_result }}"
+
+    - name: "Create output directory"
+      file:
+        path: "outputs"
+        state: directory
+      run_once: True
+
+    - name: "Save output to directory"
+      copy:
+        content: "{{ cli_result.stdout[0] }}\n"
+        dest: "outputs/{{ inventory_hostname }}.txt" 
+ 
+#    - name: Get facts
+#      ios_facts:
+#        gather_susbset: min
+#        gather_network_resources: interfaces
+
+    - name: log facts
+      debug: 
+#        msg: "{{ ansible_net_all_ipv4_addresses }}"
+         var: ansible_net_hostname
+
+- name: "Linux Playbook"
+  hosts: linux
+  become: true
+  become_user: root
+#  connection: linux
+  tasks:
+    - name: "Task to print current working directory"
+      shell: "pwd"
+      register: linux_result
+ 
+    - name: "Print directory"
+      debug:
+        msg: "{{ linux_result.stdout }}"
+
+    - name: "Checking and Installing update"
+      apt:       
+        name: "*"
+        state: latest
+
+    - name: "Remove wget"
+      apt:
+        name: wget
+        state: absent
