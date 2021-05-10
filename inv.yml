@@ -6,7 +6,6 @@ routers:
       ansible_host:
     R2:
       ansible_host:
-
   vars:
     ansible_network_os:
     ansible_user:
@@ -17,7 +16,6 @@ linux:
   hosts:
     cumulus:
       ansible_host:
-
   vars:
     ansible_network_os:
     ansible_user:
@@ -25,10 +23,18 @@ linux:
     ansible_become:
     ansible_become_method:
 
+firewall:
+  hosts:
+    fortigate:
+      ansible_host:
+  vars:
+    ansible_network_os: 
+    ansible_user:
+    ansible_password:
 
 all:
   children:
     routers:
     linux:
-
+    firewall:
 
