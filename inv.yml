@@ -37,4 +37,6 @@ all:
     routers:
     linux:
     firewall:
+  vars:
+    asn:
 
