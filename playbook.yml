@@ -50,14 +50,20 @@
       debug:
         msg: "{{ cli_result2 }}"
         
+    - name: "Create configs directory"
+      file:
+        path: "configs"
+        state: directory
+      run_once: True
+        
     - name: "Create BGP config"
       template:
         src: "{{ ansible_network_os }}_bgp.j2"
-        dest: "{{ inventory_hostname }}_bgp.config"
+        dest: "configs/{{ inventory_hostname }}_bgp.config"
         
     - name: "Configure BGP"
       ios_config:
-        src: "{{ inventory_hostname }}_bgp.config"
+        src: "configs/{{ inventory_hostname }}_bgp.config"
       register: updates
      
      - name: "Task to get bgp output"
