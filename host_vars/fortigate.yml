@@ -1,0 +1,11 @@
+---
+ansible_host:
+asn: "30"
+
+interface:
+  - int_name: "Loopback1"
+    int_addr: "3.3.3.3"
+  - int_name: "Loopback2"
+    int_addr: "30.30.30.30"
+    
+  
