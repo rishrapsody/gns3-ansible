@@ -12,9 +12,9 @@ bgp:
   asn: "10"
   neighbors:
     - address: "2.2.2.2"
-      remote-as: "20"
+      remoteas: "20"
     - address: "3.3.3.3"
-      remote-as: "30"
+      remoteas: "30"
   source: "1.1.1.1"
   networks:
     - address: "10.10.10.10"
