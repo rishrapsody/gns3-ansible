@@ -1,5 +1,6 @@
 ---
 ansible_host: "192.168.122.193"
+asn: "20"
 
 interfaces:
   - int_name: "Loopback1"
