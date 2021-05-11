@@ -1,0 +1,11 @@
+
+router bgp {{ bgp['asn'] }}
+  {% for neighors in bgp %}
+    neighbor {{ neighbors.address }} remote-as {{ neighbors.remote_as }}
+    neighbor {{ neighbors.address }} activate
+    neighbor {{ neighbors.address }} source {{ bgp['source'] }}
+  {% end for %}
+  {% for networks in bgp %}
+    network {{ networks.address }} mask {{ networks.mask }}
+  {% end for %}
+!
