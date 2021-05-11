@@ -49,6 +49,26 @@
     - name: "Print router output"
       debug:
         msg: "{{ cli_result2 }}"
+        
+    - name: "Create BGP config"
+      template:
+        src: "{{ ansible_network_os }}_bgp.j2"
+        dest: "{{ inventory_hostname }}_bgp.config"
+        
+    - name: "Configure BGP"
+      ios_config:
+        src: "{{ inventory_hostname }}_bgp.config"
+      register: updates
+     
+     - name: "Task to get bgp output"
+      ios_command:
+        commands: "show ip bgp summary"
+      register : bgp_output
+
+    - name: "Print router bgp output"
+      debug:
+        msg: "{{ bgp_output }}"
+        
 
 - name: "Linux Playbook"
   hosts: linux
