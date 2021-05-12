@@ -63,7 +63,7 @@
 
     - name: "Print router bgp output"
       debug:
-        msg: "{{ bgp_output.stdout_lines[0][-3:-1] }}"
+        msg: "{{ bgp_output.stdout_lines[0][-3:] }}"
         
 
 - name: "Linux Playbook"
