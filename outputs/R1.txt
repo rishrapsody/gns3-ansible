@@ -3,6 +3,4 @@ FastEthernet0/0        192.168.122.174 YES DHCP   up                    up
 FastEthernet1/0        unassigned      YES NVRAM  administratively down down    
 FastEthernet2/0        unassigned      YES NVRAM  administratively down down    
 FastEthernet2/1        unassigned      YES NVRAM  administratively down down    
-GigabitEthernet3/0     unassigned      YES NVRAM  administratively down down    
-Loopback1              1.1.1.1         YES manual up                    up      
-Loopback2              10.10.10.10     YES manual up                    up
+GigabitEthernet3/0     unassigned      YES NVRAM  administratively down down

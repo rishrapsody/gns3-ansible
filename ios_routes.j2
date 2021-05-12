@@ -1,0 +1,4 @@
+
+{% for i in bgp['neighbors'] %}
+ ip route {{ i.address }} 255.255.255.255 {{ i.next_hop }}
+{% endfor %}

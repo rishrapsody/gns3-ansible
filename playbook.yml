@@ -37,11 +37,23 @@
       template:
         src: "{{ ansible_network_os }}_bgp.j2"
         dest: "configs/{{ inventory_hostname }}_bgp.config"
-        
+ 
+    - name: "Create routes config"
+      template:
+        src: "{{ ansible_network_os }}_routes.j2"
+        dest: "configs/{{inventory_hostname }}_routes.config"
+
+    - name: "Configure routes"
+      ios_config:
+        src: "configs/{{ inventory_hostname }}_routes.config"
+      register: route_add 
+      
     - name: "Configure BGP"
       ios_config:
         src: "configs/{{ inventory_hostname }}_bgp.config"
       register: updates
+
+  
      
     - name: "Task to get bgp output"
       ios_command:
