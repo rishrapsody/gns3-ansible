@@ -66,7 +66,7 @@
         src: "configs/{{ inventory_hostname }}_bgp.config"
       register: updates
      
-     - name: "Task to get bgp output"
+    - name: "Task to get bgp output"
       ios_command:
         commands: "show ip bgp summary"
       register : bgp_output

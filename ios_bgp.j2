@@ -1,11 +1,13 @@
 
+
 router bgp {{ bgp['asn'] }}
-  {% for neighors in bgp %}
-    neighbor {{ neighbors.address }} remote-as {{ neighbors.remote_as }}
-    neighbor {{ neighbors.address }} activate
-    neighbor {{ neighbors.address }} source {{ bgp['source'] }}
-  {% end for %}
-  {% for networks in bgp %}
-    network {{ networks.address }} mask {{ networks.mask }}
-  {% end for %}
+  {% for i in bgp['neighbors'] %}
+    neighbor {{ bgp['neighbors'][i].address }} remote-as {{ bgp['neighbors'][i].remote_as }}
+    neighbor {{ bgp['neighbors'][i].address }} activate
+    neighbor {{ bgp['neighbors'][i].address }} source {{ bgp['source'] }}
+  {% endfor %}
+#  {% for networks in bgp %}
+#    network {{ networks.address }} mask {{ networks.mask }}
+#  {% endfor %}
 !
+
