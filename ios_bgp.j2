@@ -1,5 +1,4 @@
 
-
 router bgp {{ bgp['asn'] }}
   {% for i in neighbors %}
     neighbor {{ i.address }} remote-as {{ i.remote_as }}
@@ -10,4 +9,3 @@ router bgp {{ bgp['asn'] }}
 #    network {{ networks.address }} mask {{ networks.mask }}
 #  {% endfor %}
 !
-
