@@ -2,16 +2,12 @@
 - name: "First Playbook"
   hosts: routers
   connection: network_cli
-  gather_facts: yes
+  gather_facts: no
   tasks: 
     - name: "Task to get router interface output"
       ios_command:
         commands: "show ip interface brief"
       register : cli_result
-
-    - name: "Print router output"
-      debug:
-        msg: "{{ cli_result }}"
 
     - name: "Create output directory"
       file:
@@ -24,16 +20,6 @@
         content: "{{ cli_result.stdout[0] }}\n"
         dest: "outputs/{{ inventory_hostname }}.txt" 
  
-#    - name: Get facts
-#      ios_facts:
-#        gather_susbset: min
-#        gather_network_resources: interfaces
-
-    - name: log facts
-      debug: 
-#        msg: "{{ ansible_net_all_ipv4_addresses }}"
-         var: ansible_net_hostname
-
     - name: "Configure loopback interfaces"
       ios_config:
         lines:
@@ -41,15 +27,6 @@
         parents: "interface {{ item.int_name }}"
       with_items: "{{ interfaces }}"
 
-    - name: "Task to get router interface output"
-      ios_command:
-        commands: "show ip interface brief"
-      register : cli_result2
-
-    - name: "Print router output"
-      debug:
-        msg: "{{ cli_result2 }}"
-        
     - name: "Create configs directory"
       file:
         path: "configs"
