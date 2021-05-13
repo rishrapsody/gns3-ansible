@@ -58,7 +58,9 @@
     - name: "Task to get bgp output"
       ios_command:
         commands: "show ip bgp summary"
-#        wait_for: result['stdout_lines'][0] contains Established
+        match: any
+        retries: 3
+        wait_for: result['stdout_lines'][0] contains "2.2.2.2"
       register: bgp_output
 
     - name: "Print router bgp output"
