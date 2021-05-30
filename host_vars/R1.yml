@@ -17,7 +17,7 @@ bgp:
     - address: "3.3.3.3"
       remote_as: "30"
       next_hop: "1.2.3.4"
-  source: "1.1.1.1"
+  source: "Loopback1"
   networks:
     - address: "10.10.10.10"
       mask : "255.255.255.255"
