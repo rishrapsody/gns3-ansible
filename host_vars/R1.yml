@@ -1,5 +1,5 @@
 ---
-ansible_host: "192.168.122.174"
+ansible_host: "100.10.1.4"
 asn: "10"
 
 interfaces:
