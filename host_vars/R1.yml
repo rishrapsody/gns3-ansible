@@ -11,13 +11,10 @@ interfaces:
 bgp:
   asn: "10"
   neighbors:
-    - address: "2.2.2.2"
+    - address: "192.168.10.2"
       remote_as: "20"
-      next_hop: "192.168.122.193"
-    - address: "3.3.3.3"
+    - address: "192.168.20.3"
       remote_as: "30"
-      next_hop: "1.2.3.4"
-  source: "Loopback1"
   networks:
     - address: "10.10.10.10"
       mask : "255.255.255.255"
