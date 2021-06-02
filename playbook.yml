@@ -1,14 +1,9 @@
 ---
 - name: "First Playbook"
-  hosts: routers
+  hosts: routers,firewall
   connection: network_cli
   gather_facts: no
   tasks: 
-    - name: "Task to get router interface output"
-      ios_command:
-        commands: "show ip interface brief"
-      register : cli_result
-
     - name: "Create output directory"
       file:
         path: "outputs"
@@ -21,7 +16,7 @@
         dest: "outputs/{{ inventory_hostname }}.txt" 
  
     - name: "Configure loopback interfaces"
-      ios_config:
+      cli_config:
         lines:
           -  "ip address {{ item.int_addr }} 255.255.255.255"
         parents: "interface {{ item.int_name }}"
