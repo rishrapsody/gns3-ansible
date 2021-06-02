@@ -15,12 +15,13 @@
         content: "{{ cli_result.stdout[0] }}\n"
         dest: "outputs/{{ inventory_hostname }}.txt" 
  
-    - name: "Configure loopback interfaces"
+    - name: "Configure loopback interfaces on Router"
       cli_config:
         lines:
           -  "ip address {{ item.int_addr }} 255.255.255.255"
         parents: "interface {{ item.int_name }}"
       with_items: "{{ interfaces }}"
+      when: ansible_network_os == 'ios'
 
     - name: "Create configs directory"
       file:
