@@ -1,0 +1,4 @@
+{% for int_name,int_addr in interface[inventory_hostname].items() %}
+interface {{int_name}}
+  ip address {{int_addr}} 255.255.255.255
+{% endfor %}
