@@ -3,7 +3,6 @@ router bgp {{ bgp['asn'] }}
   {% for i in bgp['neighbors'] %}
     neighbor {{ i['address'] }} remote-as {{ i['remote_as']}}
     neighbor {{ i['address'] }} activate
-    neighbor {{ i['address'] }} update-source Loopback1
     neighbor {{ i['address'] }} ebgp-multihop 2
   {% endfor %}
   {% for net in bgp['networks'] %}
