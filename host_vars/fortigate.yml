@@ -8,4 +8,8 @@ interface:
   - int_name: "Loopback2"
     int_addr: "30.30.30.30"
     
+ansible_httpapi_use_ssl: "yes"
+ansible_httpapi_validate_certs: "no"
+ansible_httpapi_port: "443"
+    
   
