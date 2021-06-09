@@ -1,13 +1,18 @@
 - name: "Testing fortigate connection"
   hosts: fortigate
   connection: httpapi
+  collections:
+  - fortinet.fortios
+  vars:
+    ssl_verify: "False"
 
   tasks:
   - name: "Configure interface"
     fortios_system_interface:
       vdom: "root"
       state: "present"
-      interface: "Port2"
-      ip: "192.168.20.30/24"
-      mode: "static"
-      allowaccess: "ping"
+      system_interface:
+        interface: "port2"
+        mode: "static"
+        ip: "192.168.20.30/24"
+        allowaccess: "ping"
