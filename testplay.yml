@@ -1,0 +1,13 @@
+- name: "Testing fortigate connection"
+  hosts: fortigate
+  connection: httpapi
+
+  tasks:
+  - name: "Configure interface"
+    fortios_system_interface:
+      vdom: "root"
+      state: "present"
+      interface: "Port2"
+      ip: "192.168.20.30/24"
+      mode: "static"
+      allowaccess: "ping"
